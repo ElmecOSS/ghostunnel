@@ -257,10 +257,7 @@ func clientValidateFlags() error {
 }
 
 func main() {
-	err := run(os.Args[1:])
-	if err != nil {
-		exitFunc(1)
-	}
+	Runner()
 	exitFunc(0)
 }
 
