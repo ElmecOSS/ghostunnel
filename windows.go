@@ -18,11 +18,10 @@
 
 package main
 
-
 import (
 	"github.com/kardianos/service"
-	"os"
 	"golang.org/x/sys/windows/svc"
+	"os"
 )
 
 type program struct{}
@@ -36,13 +35,12 @@ func useSyslog() bool {
 	return false
 }
 
-
 func (p *program) Start(s service.Service) error {
 	// Start should not block. Do the actual work async.
 	go p.runService()
 	return nil
 }
-func (p *program) runService() error{
+func (p *program) runService() error {
 	err := run(os.Args[1:])
 	return err
 }
@@ -50,7 +48,7 @@ func (p *program) Stop(s service.Service) error {
 	return nil
 }
 
-func IsInteractive() (bool,error) {
+func IsInteractive() (bool, error) {
 	return svc.IsAnInteractiveSession()
 }
 
@@ -58,7 +56,7 @@ func Runner() error {
 	svcConfig := &service.Config{
 		Name:        "GhostTunnel",
 		DisplayName: "Ghost Tunnel Service",
-		Description: "SSL/TLS proxy with mutual authentication for securing non-TLS services.",
+		Description: "SSL/TLS proxy with mutual authentication for securing non TLS services.",
 	}
 
 	prg := &program{}

@@ -33,10 +33,6 @@ func useSyslog() bool {
 	return *syslogFlag
 }
 
-func IsInteractive() (bool,error) {
-	return true,nil
-}
-
 func Runner() error {
 	err := run(os.Args[1:])
 	if err != nil {
